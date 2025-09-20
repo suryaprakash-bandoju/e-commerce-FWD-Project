@@ -1,0 +1,1152 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+    margin-top: 30px; /* Make space for the festival banner */
+}
+
+/* Festival Banner */
+.festival-banner {
+    background: linear-gradient(to right, var(--indian-saffron), var(--indian-green));
+    color: white;
+    text-align: center;
+    padding: 8px 0;
+    font-weight: bold;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -100% 0; }
+    100% { background-position: 100% 0; }
+}
+
+/* Indian-themed color variables */
+:root {
+    --indian-saffron: #FF9933;
+    --indian-white: #FFFFFF;
+    --indian-green: #138808;
+    --indian-blue: #000080;
+    --indian-maroon: #800000;
+    --accent-color: #FF9933;
+    --sidebar-bg: #f8f9fa;
+    --tag-bg: #e2e8f0;
+    --tag-hover: #cbd5e1;
+    --filter-border: #e2e8f0;
+}
+
+/* Header Styles */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: fixed;
+    width: 100%;
+    top: 30px; /* Position below festival banner */
+    z-index: 100;
+    border-bottom: 3px solid var(--indian-saffron);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.brand h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    display: flex;
+}
+
+.brand-saffron {
+    color: var(--indian-saffron);
+}
+
+.brand-green {
+    color: var(--indian-green);
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    flex: 0 1 400px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-bar button {
+    padding: 0.5rem 1rem;
+    background-color: var(--indian-green);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-icon {
+    position: relative;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--indian-blue);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--indian-saffron);
+    color: white;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* Main Content Layout */
+main {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 110px auto 2rem; /* Adjusted for festival banner */
+    padding: 0 2rem;
+}
+
+.products-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--filter-border);
+}
+
+.products-header h2 {
+    color: var(--indian-blue);
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.products-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+#result-count {
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sort-options label {
+    font-size: 0.9rem;
+    color: var(--gray);
+}
+
+.sort-options select {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--filter-border);
+    border-radius: 4px;
+    background-color: white;
+    font-size: 0.9rem;
+    color: var(--indian-blue);
+    cursor: pointer;
+}
+
+/* Filters Styles */
+.filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    height: fit-content;
+    border-left: 4px solid var(--indian-saffron);
+    transition: all 0.3s ease;
+}
+
+.filters-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--filter-border);
+    padding-bottom: 1rem;
+}
+
+.filters-header h2 {
+    color: var(--indian-blue);
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.clear-filters {
+    background: none;
+    border: none;
+    color: var(--indian-maroon);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.clear-filters:hover {
+    text-decoration: underline;
+}
+
+/* Filter toggle styling */
+.filter-toggle {
+    display: none;
+    width: 100%;
+    background-color: var(--indian-green);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+}
+
+.filters.collapsible.active .filter-group {
+    display: block;
+}
+
+.filters.collapsible:not(.active) .filter-group {
+    display: none;
+}
+
+.filter-group {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--filter-border);
+    padding-bottom: 1.5rem;
+}
+
+.filter-group:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.filter-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.filter-title h3 {
+    font-size: 1rem;
+    color: var(--indian-blue);
+    margin: 0;
+    font-weight: 600;
+}
+
+.filter-title i {
+    color: var(--indian-saffron);
+    transition: transform 0.3s ease;
+}
+
+.filter-title.active i {
+    transform: rotate(180deg);
+}
+
+.category-filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    background: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #f8f9fa;
+    border-color: var(--indian-saffron);
+    transform: translateX(3px);
+}
+
+.filter-btn.active {
+    background-color: var(--indian-saffron);
+    color: white;
+    border-color: var(--indian-saffron);
+}
+
+.filter-btn.active i {
+    color: white;
+}
+
+.filter-btn i {
+    color: var(--indian-maroon);
+}
+
+.price-range {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.price-inputs {
+    font-weight: 500;
+    color: var(--indian-maroon);
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+input[type="range"] {
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(to right, var(--indian-saffron), var(--indian-green));
+    border-radius: 10px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid var(--indian-blue);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Product Tags */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.product-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: var(--tag-bg);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.product-tag:hover {
+    background-color: var(--tag-hover);
+    transform: translateY(-2px);
+}
+
+.product-tag.active {
+    background-color: var(--indian-saffron);
+    color: white;
+}
+
+/* Customer Ratings */
+.ratings-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.rating-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.stars {
+    color: goldenrod;
+    letter-spacing: 2px;
+}
+
+.rating-option input {
+    margin-right: 8px;
+}
+
+/* Products Grid Styles */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-color: var(--indian-saffron);
+}
+
+.product-badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 5px;
+    z-index: 2;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+}
+
+.new-badge {
+    background-color: var(--indian-green);
+}
+
+.sale-badge {
+    background-color: var(--indian-saffron);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 1.25rem;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--indian-blue);
+    font-weight: 600;
+}
+
+.product-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.card-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    background-color: var(--tag-bg);
+    color: var(--indian-blue);
+    text-transform: capitalize;
+}
+
+.card-tag.new {
+    background-color: #dcfce7;
+    color: #166534;
+}
+
+.card-tag.bestseller {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.card-tag.sale {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.card-tag.handmade {
+    background-color: #e0e7ff;
+    color: #4338ca;
+}
+
+.card-tag.organic {
+    background-color: #d1fae5;
+    color: #047857;
+}
+
+.card-tag.eco {
+    background-color: #ecfdf5;
+    color: #047857;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 8px;
+    color: goldenrod;
+    font-size: 0.9rem;
+}
+
+.product-rating span {
+    color: #64748b;
+    margin-left: 5px;
+    font-size: 0.8rem;
+}
+
+.product-price {
+    font-weight: bold;
+    color: var(--indian-green);
+}
+
+.product-category {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 10% auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    animation: modalFade 0.3s ease-out;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.modal-details h2 {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    color: var(--indian-green);
+    margin-bottom: 1rem;
+}
+
+.modal-description {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+/* Cart Notification */
+.cart-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--indian-green);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+    z-index: 2000;
+}
+
+.cart-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cart-notification i {
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Cart Modal Styling */
+.cart-modal-content {
+    width: 100%;
+}
+
+.cart-modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: var(--indian-blue);
+    text-align: center;
+}
+
+.cart-items {
+    max-height: 50vh;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+}
+
+.cart-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 40px;
+    gap: 1rem;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-item-details h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.cart-item-quantity button {
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #e74c3c;
+    font-size: 1.2rem;
+}
+
+.cart-summary {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+}
+
+.summary-row.total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--indian-saffron);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: var(--indian-green);
+}
+
+.add-to-cart {
+    padding: 0.8rem 1.5rem;
+    background-color: var(--indian-saffron);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: var(--indian-maroon);
+}
+
+/* Made in India Section */
+.made-in-india {
+    background: linear-gradient(to bottom, #f9f9f9, #f0f0f0);
+    padding: 4rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid #eaeaea;
+}
+
+.india-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.india-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.india-flag-wrapper {
+    transform: perspective(800px) rotateY(-5deg);
+}
+
+.made-in-india h2 {
+    color: var(--indian-blue);
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.india-text {
+    background: linear-gradient(to right, var(--indian-saffron) 33%, var(--indian-white) 33%, var(--indian-white) 66%, var(--indian-green) 66%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+
+.india-flag {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    height: 120px;
+    margin: 0 auto 2rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    position: relative;
+    animation: wave 8s ease-in-out infinite;
+    transform-origin: center bottom;
+    perspective: 1000px;
+}
+
+.flag-saffron {
+    background-color: var(--indian-saffron);
+    height: 33.33%;
+    width: 100%;
+}
+
+.flag-white {
+    background-color: var(--indian-white);
+    height: 33.33%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flag-green {
+    background-color: var(--indian-green);
+    height: 33.33%;
+    width: 100%;
+}
+
+.ashoka-chakra {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--indian-blue);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px rgba(0, 0, 80, 0.3);
+}
+
+/* Create the inner circle */
+.ashoka-chakra::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--indian-white);
+    z-index: 1;
+}
+
+/* Create the 24 spokes */
+.ashoka-chakra::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        var(--indian-blue) 7.5deg, 
+        var(--indian-white) 7.5deg 15deg,
+        var(--indian-blue) 15deg 22.5deg,
+        var(--indian-white) 22.5deg 30deg,
+        var(--indian-blue) 30deg 37.5deg,
+        var(--indian-white) 37.5deg 45deg,
+        var(--indian-blue) 45deg 52.5deg,
+        var(--indian-white) 52.5deg 60deg,
+        var(--indian-blue) 60deg 67.5deg,
+        var(--indian-white) 67.5deg 75deg,
+        var(--indian-blue) 75deg 82.5deg,
+        var(--indian-white) 82.5deg 90deg,
+        var(--indian-blue) 90deg 97.5deg,
+        var(--indian-white) 97.5deg 105deg,
+        var(--indian-blue) 105deg 112.5deg,
+        var(--indian-white) 112.5deg 120deg,
+        var(--indian-blue) 120deg 127.5deg,
+        var(--indian-white) 127.5deg 135deg,
+        var(--indian-blue) 135deg 142.5deg,
+        var(--indian-white) 142.5deg 150deg,
+        var(--indian-blue) 150deg 157.5deg,
+        var(--indian-white) 157.5deg 165deg,
+        var(--indian-blue) 165deg 172.5deg,
+        var(--indian-white) 172.5deg 180deg,
+        var(--indian-blue) 180deg 187.5deg,
+        var(--indian-white) 187.5deg 195deg,
+        var(--indian-blue) 195deg 202.5deg,
+        var(--indian-white) 202.5deg 210deg,
+        var(--indian-blue) 210deg 217.5deg,
+        var(--indian-white) 217.5deg 225deg,
+        var(--indian-blue) 225deg 232.5deg,
+        var(--indian-white) 232.5deg 240deg,
+        var(--indian-blue) 240deg 247.5deg,
+        var(--indian-white) 247.5deg 255deg,
+        var(--indian-blue) 255deg 262.5deg,
+        var(--indian-white) 262.5deg 270deg,
+        var(--indian-blue) 270deg 277.5deg,
+        var(--indian-white) 277.5deg 285deg,
+        var(--indian-blue) 285deg 292.5deg,
+        var(--indian-white) 292.5deg 300deg,
+        var(--indian-blue) 300deg 307.5deg,
+        var(--indian-white) 307.5deg 315deg,
+        var(--indian-blue) 315deg 322.5deg,
+        var(--indian-white) 322.5deg 330deg,
+        var(--indian-blue) 330deg 337.5deg,
+        var(--indian-white) 337.5deg 345deg,
+        var(--indian-blue) 345deg 352.5deg,
+        var(--indian-white) 352.5deg 360deg
+    );
+    animation: rotate 20s linear infinite;
+    z-index: 0;
+}
+
+/* Flag waving animation */
+@keyframes wave {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    25% { transform: rotateX(1deg) rotateY(1deg); }
+    50% { transform: rotateX(0deg) rotateY(0.5deg); }
+    75% { transform: rotateX(-1deg) rotateY(-0.5deg); }
+    100% { transform: rotateX(0deg) rotateY(0deg); }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.india-tagline {
+    margin-bottom: 3rem;
+    color: #555;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.made-in-india-products {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.india-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.india-product:hover {
+    transform: translateY(-5px);
+}
+
+.product-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--indian-saffron), var(--indian-green));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.india-product i {
+    font-size: 2rem;
+    color: white;
+}
+
+.india-product h3 {
+    font-size: 1.2rem;
+    color: var(--indian-blue);
+    margin-bottom: 0.5rem;
+}
+
+.india-product p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.india-badge {
+    display: inline-block;
+    background: linear-gradient(to right, var(--indian-saffron), var(--indian-green));
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+/* Add subtle background pattern */
+.made-in-india::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(255, 153, 51, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(19, 136, 8, 0.05) 0%, transparent 25%);
+    z-index: 0;
+}
+
+/* Footer */
+.footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.footer-content p {
+    margin: 0.5rem 0;
+}
+
+/* Animations */
+@keyframes modalFade {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .filters {
+        position: sticky;
+        top: 80px;
+        background: white;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        border-left: none;
+        border-bottom: 4px solid var(--indian-saffron);
+    }
+    
+    .products-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .products-meta {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .filter-title:not(.active) + div {
+        display: none;
+    }
+
+    .category-filters {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .modal-body {
+        grid-template-columns: 1fr;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .search-bar {
+        order: 3;
+        flex: 1 1 100%;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .product-image {
+        height: 150px;
+    }
+    
+    .product-title {
+        font-size: 0.9rem;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        padding: 1rem;
+        width: 95%;
+    }
+    
+    .modal-image {
+        height: 200px;
+    }
+
+    /* Add filter toggle button for mobile */
+    .filter-toggle {
+        display: block;
+        width: 100%;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+}
